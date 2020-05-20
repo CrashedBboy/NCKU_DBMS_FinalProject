@@ -1,0 +1,18 @@
+{
+  "name": "ncku_dbms_finalproject",
+  "version": "1.0.0",
+  "description": "final project for course DBMS at NCKU",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CrashedBboy/NCKU_DBMS_FinalProject.git"
+  },
+  "author": "crashedbboy",
+  "bugs": {
+    "url": "https://github.com/CrashedBboy/NCKU_DBMS_FinalProject/issues"
+  },
+  "homepage": "https://github.com/CrashedBboy/NCKU_DBMS_FinalProject#readme"
+}
