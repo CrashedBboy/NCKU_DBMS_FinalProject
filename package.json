@@ -14,5 +14,8 @@
   "bugs": {
     "url": "https://github.com/CrashedBboy/NCKU_DBMS_FinalProject/issues"
   },
-  "homepage": "https://github.com/CrashedBboy/NCKU_DBMS_FinalProject#readme"
+  "homepage": "https://github.com/CrashedBboy/NCKU_DBMS_FinalProject#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
