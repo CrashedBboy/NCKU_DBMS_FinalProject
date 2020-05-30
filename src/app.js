@@ -7,7 +7,7 @@ var app = express();
 app.use(express.static(path.resolve(path.join(__dirname, "../static"))));
 
 app.get('/', function (req, res) {
-    res.send('Hello World!');
+    res.redirect("template.html");
 });
 
 app.listen(3000, function () {
