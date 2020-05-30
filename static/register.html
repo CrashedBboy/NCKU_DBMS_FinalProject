@@ -87,8 +87,11 @@
                     <div class="col-sm">
                         <div style="font-size: 1rem; margin: 2rem 0; color: rgb(90,90,90);">1. Button Operation</div>
                         <form id="button-form" class="form-inline">
-                            <input type="text" class="form-control mb-2 mr-sm-4" id="name" placeholder="Jane Doe">
-                            <input type="text" class="form-control mb-2 mr-sm-4" id="username" placeholder="Username">
+                            <input type="text" class="form-control mb-2 mr-sm-1" id="account" placeholder="Account">
+                            <input type="text" class="form-control mb-2 mr-sm-1" id="nickname" placeholder="Nickname">
+                            <input type="password" class="form-control mb-2 mr-sm-1" id="password"
+                                placeholder="Password">
+                            <input type="text" class="form-control mb-2 mr-sm-1" id="signature" placeholder="Signature">
                             <button type="submit" class="btn btn-primary mb-2">Submit</button>
                         </form>
                     </div>
@@ -102,7 +105,7 @@
                         <form id="sql-form" class="form">
                             <div class="form-group">
                                 <textarea class="form-control" id="sql"
-                                    rows="2">SELECT Store_Name FROM Store_Information;</textarea>
+                                    rows="2">INSERT INTO User (account, nickname, password, sinature, created_at) VALUES ('demo', 'DEMO', 'qwerty', 'hello world', '2020/05/31');</textarea>
                             </div>
                             <button type="submit" class="btn btn-primary mb-2">Submit</button>
                         </form>
@@ -123,65 +126,26 @@
                 <!-- Result Table -->
                 <div class="row">
                     <div class="col-sm">
-                        <div style="font-size: 1.25rem; margin: 1rem 0;">Table 1</div>
+                        <div style="font-size: 1.25rem; margin: 1rem 0;">Table: Users</div>
                         <div class="table-responsive">
                             <table class="table">
                                 <thead>
                                     <tr>
                                         <th scope="col">id</th>
-                                        <th scope="col">col1</th>
-                                        <th scope="col">col2</th>
-                                        <th scope="col">col3</th>
-                                        <th scope="col">col4</th>
-                                        <th scope="col">col5</th>
+                                        <th scope="col">account</th>
+                                        <th scope="col">nickname</th>
+                                        <th scope="col">password</th>
+                                        <th scope="col">sinature</th>
+                                        <th scope="col">login_count</th>
+                                        <th scope="col">created_at</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>id</th>
-                                        <td>val1</td>
-                                        <td>val2</td>
-                                        <td>val3</td>
-                                        <td>val4</td>
-                                        <td>val5</td>
-                                    </tr>
-                                </tbody>
+                                <tbody id="user-rows"></tbody>
                             </table>
                         </div>
+
                     </div>
                 </div>
-
-                <!-- Result Table -->
-                <div class="row">
-                    <div class="col-sm">
-                        <div style="font-size: 1.25rem; margin: 1rem 0;">Table 2</div>
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">id</th>
-                                        <th scope="col">col1</th>
-                                        <th scope="col">col2</th>
-                                        <th scope="col">col3</th>
-                                        <th scope="col">col4</th>
-                                        <th scope="col">col5</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>id</th>
-                                        <td>val1</td>
-                                        <td>val2</td>
-                                        <td>val3</td>
-                                        <td>val4</td>
-                                        <td>val5</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
 
@@ -190,6 +154,7 @@
     <script src="js/jquery-3.5.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/template.js"></script>
+    <script src="js/register.js"></script>
 </body>
 
 </html>

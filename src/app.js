@@ -19,6 +19,11 @@ var db = new sqlite3.Database(runtimeDBPath);
 // create Express.js app
 var app = express();
 
+// express setting for decoding request
+app.use(express.json()) // for parsing application/json
+app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
+
+// serving static assets
 console.log("Serving static assets ...");
 app.use('/static', express.static(path.resolve(path.join(__dirname, "../static"))));
 
@@ -26,6 +31,7 @@ app.get('/', function (req, res) {
     res.redirect("template.html");
 });
 
+// [API] Get all DB rows
 app.get('/data', (req, res) => {
 
     let data = new Object();
@@ -68,6 +74,52 @@ app.get('/data', (req, res) => {
 
             // return response
             res.json(data);
+        });
+    });
+});
+
+// [API] all new user
+app.post('/api/gui/register', (req, res) => {
+
+    let dateString = new Date().toLocaleDateString();
+    db.serialize(() => {
+
+        let sql = `INSERT INTO User (account, nickname, password, sinature, created_at) VALUES 
+                ('${req.body.account}', '${req.body.nickname}', '${req.body.password}', '${req.body.signature}', '${dateString}');`;
+
+        db.run(sql, (err) => {
+
+            if (err) {
+                return res.json({
+                    result: false,
+                    error: err
+                });
+            }
+
+            return res.json({
+                result: true
+            });
+        });
+    });
+});
+
+// [API] execute SQL passed from request
+app.post('/api/sql/non-select', (req, res) => {
+
+    db.serialize(() => {
+
+        db.run(req.body.sql, (err) => {
+
+            if (err) {
+                return res.json({
+                    result: false,
+                    error: err
+                });
+            }
+
+            return res.json({
+                result: true
+            });
         });
     });
 });
