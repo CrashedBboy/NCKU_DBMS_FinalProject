@@ -10,12 +10,14 @@
     <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
 
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/template.css">
 </head>
 
 <body>
 
     <div class="container">
+
+        <!-- page header: start -->
         <div class="row">
             <div class="col-sm"></div>
             <div class="col-sm" style="text-align: center; margin: 3rem 0;">
@@ -26,6 +28,7 @@
             </div>
             <div class="col-sm"></div>
         </div>
+        <!-- page header: end -->
 
         <div class="row">
 
@@ -73,15 +76,116 @@
             <!-- side menu: end -->
 
             <div class="col-sm-9">
-                
+
+                <!-- seciton title -->
+                <div class="row">
+                    <div class="col-sm" style="font-size: 2rem;">Register User</div>
+                </div>
+
+                <!-- button form: start -->
+                <div class="row">
+                    <div class="col-sm">
+                        <div style="font-size: 1rem; margin: 2rem 0; color: rgb(90,90,90);">1. Button Operation</div>
+                        <form class="form-inline">
+                            <input type="text" class="form-control mb-2 mr-sm-4" id="name" placeholder="Jane Doe">
+                            <input type="text" class="form-control mb-2 mr-sm-4" id="username" placeholder="Username">
+                            <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                        </form>
+                    </div>
+                </div>
+                <!-- button form: end -->
+
+                <!-- raw SQL form: start-->
+                <div class="row">
+                    <div class="col-sm">
+                        <div style="font-size: 1rem; margin: 2rem 0; color: rgb(90,90,90);">2. RAW SQL Operation</div>
+                        <form class="form">
+                            <div class="form-group">
+                                <textarea class="form-control" id="sql"
+                                    rows="2">SELECT Store_Name FROM Store_Information;</textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                        </form>
+                    </div>
+                </div>
+                <!-- raw SQL form: end-->
+
+                <!-- operation status: start -->
+                <div class="alert alert-success text-center d-none" role="alert">
+                    Operation success!
+                </div>
+
+                <div class="alert alert-danger text-center d-none" role="alert">
+                    Operation failed!
+                </div>
+                <!--operation status: end-->
+
+                <!-- Result Table -->
+                <div class="row">
+                    <div class="col-sm">
+                        <div style="font-size: 1.25rem; margin: 1rem 0;">Table 1</div>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">id</th>
+                                    <th scope="col">col1</th>
+                                    <th scope="col">col2</th>
+                                    <th scope="col">col3</th>
+                                    <th scope="col">col4</th>
+                                    <th scope="col">col5</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>id</th>
+                                    <td>val1</td>
+                                    <td>val2</td>
+                                    <td>val3</td>
+                                    <td>val4</td>
+                                    <td>val5</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Result Table -->
+                <div class="row">
+                    <div class="col-sm">
+                        <div style="font-size: 1.25rem; margin: 1rem 0;">Table 2</div>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">id</th>
+                                    <th scope="col">col1</th>
+                                    <th scope="col">col2</th>
+                                    <th scope="col">col3</th>
+                                    <th scope="col">col4</th>
+                                    <th scope="col">col5</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>id</th>
+                                    <td>val1</td>
+                                    <td>val2</td>
+                                    <td>val3</td>
+                                    <td>val4</td>
+                                    <td>val5</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
             </div>
         </div>
-        
+
     </div>
 
     <script src="js/jquery-3.5.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/index.js"></script>
+    <script src="js/template.js"></script>
 </body>
 
 </html>
