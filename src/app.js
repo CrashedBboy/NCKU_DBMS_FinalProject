@@ -78,7 +78,7 @@ app.get('/data', (req, res) => {
     });
 });
 
-// [API] all new user
+// [API] create a new user
 app.post('/api/gui/register', (req, res) => {
 
     let dateString = new Date().toLocaleDateString();
@@ -86,6 +86,29 @@ app.post('/api/gui/register', (req, res) => {
 
         let sql = `INSERT INTO User (account, nickname, password, signature, created_at) VALUES 
                 ('${req.body.account}', '${req.body.nickname}', '${req.body.password}', '${req.body.signature}', '${dateString}');`;
+
+        db.run(sql, (err) => {
+
+            if (err) {
+                return res.json({
+                    result: false,
+                    error: err
+                });
+            }
+
+            return res.json({
+                result: true
+            });
+        });
+    });
+});
+
+// [API] alter nickname for a user
+app.post('/api/gui/nickname', (req, res) => {
+
+    db.serialize(() => {
+
+        let sql = `UPDATE User SET nickname='${req.body.nickname}' WHERE id=${req.body.id};`;
 
         db.run(sql, (err) => {
 

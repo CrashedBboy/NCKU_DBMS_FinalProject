@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>DBMS Final Project</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/template.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- page header: start -->
+        <div class="row">
+            <div class="col-sm"></div>
+            <div class="col-sm" style="text-align: center; margin: 3rem 0;">
+                <div>
+                    <h2>DBMS Final Project</h2>
+                </div>
+                <div style="color: grey; letter-spacing: 2px; margin: 1rem 0;">PTT Administrator Console</div>
+            </div>
+            <div class="col-sm"></div>
+        </div>
+        <!-- page header: end -->
+
+        <div class="row">
+
+            <!-- side menu: start -->
+            <div class="col-sm-3" style="text-align: right;">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><a href="register.html">
+                            <div>Register User</div>
+                            <small style="color: grey;">INSERT</small>
+                        </a></li>
+                    <li class="list-group-item"><a href="nickname.html">
+                            <div>Modify User Nickname</div>
+                            <small style="color: grey;">UPDATE</small>
+                        </a></li>
+                    <li class="list-group-item"><a href="board-user.html">
+                            <div>Search Board Users</div>
+                            <small style="color: grey;">SELECT, IN</small>
+                        </a></li>
+                    <li class="list-group-item"><a href="non-board-user.html">
+                            <div>Search non-Board Users</div>
+                            <small style="color: grey;">SELECT, NOT IN</small>
+                        </a></li>
+                    <li class="list-group-item"><a href="board-author-info.html">
+                            <div>Board Author Info</div>
+                            <small style="color: grey;">SELECT, EXISTS</small>
+                        </a></li>
+                    <li class="list-group-item"><a href="delete-inactive-user.html">
+                            <div>Delete Inactive User</div>
+                            <small style="color: grey;">NOT EXISTS, DELETE</small>
+                        </a></li>
+                    <li class="list-group-item"><a href="article-count.html">
+                            <div>Number of User Article</div>
+                            <small style="color: grey;">SELECT, COUNT</small>
+                        </a></li>
+                    <li class="list-group-item"><a href="login-statistic.html">
+                            <div>Login Statistic</div>
+                            <small style="color: grey;">SELECT, SUM, MAX, MIN, AVG</small>
+                        </a></li>
+                    <li class="list-group-item"><a href="empty-board.html">
+                            <div>List Empty Board</div>
+                            <small style="color: grey;">SELECT, HAVING</small>
+                        </a></li>
+                </ul>
+            </div>
+            <!-- side menu: end -->
+
+            <div class="col-sm-9">
+
+                <!-- seciton title -->
+                <div class="row">
+                    <div class="col-sm" style="font-size: 2rem;">Modify User Nickname</div>
+                </div>
+
+                <!-- button form: start -->
+                <div class="row">
+                    <div class="col-sm">
+                        <div style="font-size: 1rem; margin: 2rem 0; color: rgb(90,90,90);">1. Button Operation</div>
+                        <form id="button-form" class="form-inline">
+                            <input type="text" class="form-control mb-2 mr-sm-2" id="user-id" placeholder="User ID">
+                            <input type="text" class="form-control mb-2 mr-sm-2" id="nickname" placeholder="New Nickname">
+                            <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                        </form>
+                    </div>
+                </div>
+                <!-- button form: end -->
+
+                <!-- raw SQL form: start-->
+                <div class="row">
+                    <div class="col-sm">
+                        <div style="font-size: 1rem; margin: 2rem 0; color: rgb(90,90,90);">2. RAW SQL Operation</div>
+                        <form id="sql-form" class="form">
+                            <div class="form-group">
+                                <textarea class="form-control" id="sql"
+                                    rows="2">UPDATE User SET nickname='DEMO' WHERE id=1;</textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                        </form>
+                    </div>
+                </div>
+                <!-- raw SQL form: end-->
+
+                <!-- operation status: start -->
+                <div id="status-success" class="alert alert-success text-center d-none" role="alert">
+                    Operation success!
+                </div>
+
+                <div id="status-failure" class="alert alert-danger text-center d-none" role="alert">
+                    Operation failed!
+                </div>
+                <!--operation status: end-->
+
+                <!-- Result Table -->
+                <div class="row">
+                    <div class="col-sm">
+                        <div style="font-size: 1.25rem; margin: 1rem 0;">Table User</div>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">id</th>
+                                        <th scope="col">account</th>
+                                        <th scope="col">nickname</th>
+                                        <th scope="col">password</th>
+                                        <th scope="col">signature</th>
+                                        <th scope="col">login_count</th>
+                                        <th scope="col">created_at</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="user-rows"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/template.js"></script>
+    <script src="js/nickname.js"></script>
+</body>
+
+</html>
