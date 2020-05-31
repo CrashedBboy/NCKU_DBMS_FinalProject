@@ -226,6 +226,33 @@ app.post('/api/gui/delete-inactive-user', (req, res) => {
     });
 });
 
+// [API] search user information if he/she has posted articles in board
+app.post('/api/gui/login-statistic', (req, res) => {
+
+    db.serialize(() => {
+
+        let sql = `SELECT COUNT(id) AS UserNumber, SUM(login_count) AS TotalLogin,
+                    MAX(login_count) AS MaxLogin, MIN(login_count) AS MinLogin, AVG(login_count) AS AvgLogin
+                    FROM User;`;
+
+        db.all(sql, (err, rows) => {
+
+            if (err) {
+                return res.json({
+                    result: false,
+                    error: err,
+                    rows: []
+                });
+            }
+
+            return res.json({
+                result: true,
+                rows: rows
+            });
+        });
+    });
+});
+
 // [API] execute SQL passed from request
 app.post('/api/sql/non-select', (req, res) => {
 
