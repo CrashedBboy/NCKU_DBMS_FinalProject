@@ -151,6 +151,31 @@ app.post('/api/gui/board-user', (req, res) => {
     });
 });
 
+// [API] search non-board users
+app.post('/api/gui/non-board-user', (req, res) => {
+
+    db.serialize(() => {
+
+        let sql = `SELECT * FROM Board_User WHERE board_id NOT IN (${req.body.board1}, ${req.body.board2});`;
+
+        db.all(sql, (err, rows) => {
+
+            if (err) {
+                return res.json({
+                    result: false,
+                    error: err,
+                    rows: []
+                });
+            }
+
+            return res.json({
+                result: true,
+                rows: rows
+            });
+        });
+    });
+});
+
 // [API] execute SQL passed from request
 app.post('/api/sql/non-select', (req, res) => {
 
