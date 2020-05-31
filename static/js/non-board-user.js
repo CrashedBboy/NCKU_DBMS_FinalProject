@@ -65,6 +65,8 @@ $('form#sql-form button[type=submit]').click((e) => {
 
 function listResult(rows) {
 
+    $("#result-rows").empty();
+    
     if (rows.length > 0) {
 
         // display table header
@@ -75,7 +77,6 @@ function listResult(rows) {
         });
 
         // display table rows
-        $("#result-rows").empty();
         rows.forEach((row) => {
 
             let gridString = "";
@@ -88,7 +89,7 @@ function listResult(rows) {
     }
 }
 
-// display all rows of user table
+// display rows of DB tables
 function listData() {
     getDBData().then((dbData) => {
 

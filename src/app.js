@@ -176,6 +176,32 @@ app.post('/api/gui/non-board-user', (req, res) => {
     });
 });
 
+// [API] search user information if he/she has posted articles in board
+app.post('/api/gui/board-info', (req, res) => {
+
+    db.serialize(() => {
+
+        let sql = `SELECT * FROM Board WHERE EXISTS 
+            (SELECT * FROM Article WHERE board=${req.body.board}) AND id=${req.body.board};`;
+
+        db.all(sql, (err, rows) => {
+
+            if (err) {
+                return res.json({
+                    result: false,
+                    error: err,
+                    rows: []
+                });
+            }
+
+            return res.json({
+                result: true,
+                rows: rows
+            });
+        });
+    });
+});
+
 // [API] execute SQL passed from request
 app.post('/api/sql/non-select', (req, res) => {
 

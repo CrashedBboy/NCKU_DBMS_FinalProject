@@ -8,11 +8,10 @@ $('form#button-form button[type=submit]').click((e) => {
     e.preventDefault();
 
     $.ajax({
-        url: '/api/gui/board-user',
+        url: '/api/gui/board-info',
         method: 'POST',
         data: {
-            board1: checkValue($('#board1').val()),
-            board2: checkValue($('#board2').val())
+            board: checkValue($('#boardid').val())
         }
     })
     .done((res) => {
@@ -63,6 +62,7 @@ $('form#sql-form button[type=submit]').click((e) => {
     });
 });
 
+// display rows returned from SELECT SQLs
 function listResult(rows) {
 
     $("#result-rows").empty();
@@ -77,6 +77,7 @@ function listResult(rows) {
         });
 
         // display table rows
+        $("#result-rows").empty();
         rows.forEach((row) => {
 
             let gridString = "";
@@ -93,24 +94,8 @@ function listResult(rows) {
 function listData() {
     getDBData().then((dbData) => {
 
-        $('#user-rows').empty();
-
-        dbData.users.forEach((user) => {
-
-            $('#user-rows').append(
-                `<tr>
-                    <td>${user.id}</th>
-                    <td>${user.account}</td>
-                    <td>${user.nickname}</td>
-                    <td>${user.password}</td>
-                    <td>${user.signature}</td>
-                    <td>${user.login_count}</td>
-                    <td>${user.created_at.substring(0, 10)}</td>
-                </tr>`
-            );
-        });
-
         $('#board-rows').empty();
+
         dbData.boards.forEach((board) => {
 
             $('#board-rows').append(
@@ -120,19 +105,22 @@ function listData() {
                     <td>${board.description}</td>
                     <td>${board.greeting}</td>
                     <td>${board.manager}</td>
-                    <td>${board.created_at.substring(0, 10)}</td>
+                    <td>${board.created_at}</td>
                 </tr>`
             );
         });
 
-        $('#mapping-rows').empty();
-        dbData.board_users.forEach((mapping) => {
+        $('#article-rows').empty();
+        dbData.articles.forEach((article) => {
 
-            $('#mapping-rows').append(
+            $('#article-rows').append(
                 `<tr>
-                    <td>${mapping.board_id}</th>
-                    <td>${mapping.user_id}</td>
-                    <td>${mapping.joined_at}</td>
+                    <td>${article.id}</th>
+                    <td>${article.author}</th>
+                    <td>${article.title}</th>
+                    <td>${article.context}</th>
+                    <td>${article.board}</th>
+                    <td>${article.created_at.substring(0, 10)}</th>
                 </tr>`
             );
         });
