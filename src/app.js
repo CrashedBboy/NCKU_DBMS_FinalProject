@@ -126,6 +126,31 @@ app.post('/api/gui/nickname', (req, res) => {
     });
 });
 
+// [API] search board users
+app.post('/api/gui/board-user', (req, res) => {
+
+    db.serialize(() => {
+
+        let sql = `SELECT * FROM Board_User WHERE board_id IN (${req.body.board1}, ${req.body.board2});`;
+
+        db.all(sql, (err, rows) => {
+
+            if (err) {
+                return res.json({
+                    result: false,
+                    error: err,
+                    rows: []
+                });
+            }
+
+            return res.json({
+                result: true,
+                rows: rows
+            });
+        });
+    });
+});
+
 // [API] execute SQL passed from request
 app.post('/api/sql/non-select', (req, res) => {
 
@@ -142,6 +167,29 @@ app.post('/api/sql/non-select', (req, res) => {
 
             return res.json({
                 result: true
+            });
+        });
+    });
+});
+
+// [API] execute SQL passed from request
+app.post('/api/sql/select', (req, res) => {
+
+    db.serialize(() => {
+
+        db.all(req.body.sql, (err, rows) => {
+
+            if (err) {
+                return res.json({
+                    result: false,
+                    error: err,
+                    rows: []
+                });
+            }
+
+            return res.json({
+                result: true,
+                rows: rows
             });
         });
     });
