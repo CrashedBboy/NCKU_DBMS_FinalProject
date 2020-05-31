@@ -84,7 +84,7 @@ app.post('/api/gui/register', (req, res) => {
     let dateString = new Date().toLocaleDateString();
     db.serialize(() => {
 
-        let sql = `INSERT INTO User (account, nickname, password, sinature, created_at) VALUES 
+        let sql = `INSERT INTO User (account, nickname, password, signature, created_at) VALUES 
                 ('${req.body.account}', '${req.body.nickname}', '${req.body.password}', '${req.body.signature}', '${dateString}');`;
 
         db.run(sql, (err) => {

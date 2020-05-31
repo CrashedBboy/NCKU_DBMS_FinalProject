@@ -76,7 +76,7 @@ function listUsers() {
                     <td>${user.account}</td>
                     <td>${user.nickname}</td>
                     <td>${user.password}</td>
-                    <td>${user.sinature}</td>
+                    <td>${user.signature}</td>
                     <td>${user.login_count}</td>
                     <td>${user.created_at.substring(0, 10)}</td>
                 </tr>`
