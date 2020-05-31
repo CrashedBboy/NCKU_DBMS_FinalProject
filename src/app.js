@@ -28,7 +28,7 @@ console.log("Serving static assets ...");
 app.use('/static', express.static(path.resolve(path.join(__dirname, "../static"))));
 
 app.get('/', function (req, res) {
-    res.redirect("template.html");
+    res.redirect("static/index.html");
 });
 
 // [API] Get all DB rows
