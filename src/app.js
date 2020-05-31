@@ -253,6 +253,31 @@ app.post('/api/gui/login-statistic', (req, res) => {
     });
 });
 
+// [API] search user information if he/she has posted articles in board
+app.post('/api/gui/empty-board', (req, res) => {
+
+    db.serialize(() => {
+
+        let sql = `SELECT board_id, COUNT(user_id) FROM Board_User GROUP BY board_id HAVING COUNT(user_id) >= 2;`;
+
+        db.all(sql, (err, rows) => {
+
+            if (err) {
+                return res.json({
+                    result: false,
+                    error: err,
+                    rows: []
+                });
+            }
+
+            return res.json({
+                result: true,
+                rows: rows
+            });
+        });
+    });
+});
+
 // [API] execute SQL passed from request
 app.post('/api/sql/non-select', (req, res) => {
 

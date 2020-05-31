@@ -64,7 +64,7 @@
                             <small style="color: grey;">SELECT, COUNT, SUM, MAX, MIN, AVG</small>
                         </a></li>
                     <li class="list-group-item"><a href="popular-board.html">
-                            <div>List Popular Board</div>
+                            <div>List Popular Boards</div>
                             <small style="color: grey;">SELECT, HAVING</small>
                         </a></li>
                 </ul>
@@ -75,7 +75,7 @@
 
                 <!-- seciton title -->
                 <div class="row">
-                    <div class="col-sm" style="font-size: 2rem;">Search Non-Board Users</div>
+                    <div class="col-sm" style="font-size: 2rem;">List Popular Boards</div>
                 </div>
 
                 <!-- button form: start -->
@@ -83,8 +83,6 @@
                     <div class="col-sm">
                         <div style="font-size: 1rem; margin: 2rem 0; color: rgb(90,90,90);">1. Button Operation</div>
                         <form id="button-form" class="form-inline">
-                            <input type="text" class="form-control mb-2 mr-sm-2" id="board1" placeholder="Board1 ID">
-                            <input type="text" class="form-control mb-2 mr-sm-2" id="board2" placeholder="Board2 ID">
                             <button type="submit" class="btn btn-primary mb-2">Submit</button>
                         </form>
                     </div>
@@ -98,7 +96,7 @@
                         <form id="sql-form" class="form">
                             <div class="form-group">
                                 <textarea class="form-control" id="sql"
-                                    rows="2">SELECT * FROM Board_User WHERE board_id NOT IN (4, 5);</textarea>
+                                    rows="2">SELECT board_id, COUNT(user_id) FROM Board_User GROUP BY board_id HAVING COUNT(user_id) >= 2;</textarea>
                             </div>
                             <button type="submit" class="btn btn-primary mb-2">Submit</button>
                         </form>
@@ -227,7 +225,7 @@
     <script src="js/jquery-3.5.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/template.js"></script>
-    <script src="js/non-board-user.js"></script>
+    <script src="js/popular-board.js"></script>
 </body>
 
 </html>
