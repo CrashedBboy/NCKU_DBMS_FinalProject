@@ -79,10 +79,10 @@
 
                 <!-- seciton title -->
                 <div class="row">
-                    <div class="col-sm" style="font-size: 2rem;">Search Board's Information</div>
+                    <div class="col-sm" style="font-size: 2rem;">Delete Inactive User</div>
                 </div>
                 <div class="row">
-                    <div class="col-sm" style="color: grey;">Show board information if there're articles posted in the board</div>
+                    <div class="col-sm" style="color: grey;">Delete specified user if he/she has no comment</div>
                 </div>
 
                 <!-- button form: start -->
@@ -90,7 +90,7 @@
                     <div class="col-sm">
                         <div style="font-size: 1rem; margin: 2rem 0; color: rgb(90,90,90);">1. Button Operation</div>
                         <form id="button-form" class="form-inline">
-                            <input type="text" class="form-control mb-2 mr-sm-4" id="boardid" placeholder="Board ID">
+                            <input type="text" class="form-control mb-2 mr-sm-2" id="userid" placeholder="User ID">
                             <button type="submit" class="btn btn-primary mb-2">Submit</button>
                         </form>
                     </div>
@@ -104,7 +104,7 @@
                         <form id="sql-form" class="form">
                             <div class="form-group">
                                 <textarea class="form-control" id="sql"
-                                    rows="2">SELECT * FROM Board WHERE EXISTS (SELECT * FROM Article WHERE board=1) AND id=1;</textarea>
+                                    rows="2">DELETE FROM User WHERE NOT EXISTS (SELECT * FROM Comment WHERE author=8) AND id=8;</textarea>
                             </div>
                             <button type="submit" class="btn btn-primary mb-2">Submit</button>
                         </form>
@@ -125,78 +125,48 @@
                 <!-- Result Table -->
                 <div class="row">
                     <div class="col-sm">
-                        <div style="font-size: 1.25rem; margin: 1rem 0;">Search Result: Board_User Mapping</div>
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead>
-                                    <tr id="result-headers">
-                                        <th scope="col">id</th>
-                                        <th scope="col">title</th>
-                                        <th scope="col">description</th>
-                                        <th scope="col">greeting</th>
-                                        <th scope="col">manager</th>
-                                        <th scope="col">created_at</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="result-rows"></tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Result Table -->
-                <div class="row">
-                    <div class="col-sm">
-                        <div style="font-size: 1.25rem; margin: 1rem 0;">Table: Board</div>
+                        <div style="font-size: 1.25rem; margin: 1rem 0;">Table: Users</div>
                         <div class="table-responsive">
                             <table class="table">
                                 <thead>
                                     <tr>
                                         <th scope="col">id</th>
-                                        <th scope="col">title</th>
-                                        <th scope="col">description</th>
-                                        <th scope="col">greeting</th>
-                                        <th scope="col">manager</th>
+                                        <th scope="col">account</th>
+                                        <th scope="col">nickname</th>
+                                        <th scope="col">password</th>
+                                        <th scope="col">signature</th>
+                                        <th scope="col">login_count</th>
                                         <th scope="col">created_at</th>
                                     </tr>
                                 </thead>
-                                <tbody id="board-rows"></tbody>
+                                <tbody id="user-rows"></tbody>
                             </table>
                         </div>
+
                     </div>
                 </div>
 
                 <!-- Result Table -->
                 <div class="row">
                     <div class="col-sm">
-                        <div style="font-size: 1.25rem; margin: 1rem 0;">Table: Article</div>
+                        <div style="font-size: 1.25rem; margin: 1rem 0;">Table: Comment</div>
                         <div class="table-responsive">
                             <table class="table">
                                 <thead>
                                     <tr>
                                         <th scope="col">id</th>
                                         <th scope="col">author</th>
-                                        <th scope="col">title</th>
+                                        <th scope="col">article</th>
                                         <th scope="col">context</th>
-                                        <th scope="col">board</th>
+                                        <th scope="col">type</th>
                                         <th scope="col">created_at</th>
                                     </tr>
                                 </thead>
-                                <tbody id="article-rows">
-                                    <tr>
-                                        <td>id</th>
-                                        <td>val1</td>
-                                        <td>val2</td>
-                                        <td>val3</td>
-                                        <td>val4</td>
-                                        <td>val5</td>
-                                    </tr>
-                                </tbody>
+                                <tbody id="comment-rows"></tbody>
                             </table>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
 
@@ -205,7 +175,7 @@
     <script src="js/jquery-3.5.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/template.js"></script>
-    <script src="js/board-info.js"></script>
+    <script src="js/delete-inactive-user.js"></script>
 </body>
 
 </html>

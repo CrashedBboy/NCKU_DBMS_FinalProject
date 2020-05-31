@@ -202,6 +202,30 @@ app.post('/api/gui/board-info', (req, res) => {
     });
 });
 
+// [API] search user information if he/she has posted articles in board
+app.post('/api/gui/delete-inactive-user', (req, res) => {
+
+    db.serialize(() => {
+
+        let sql = `DELETE FROM User WHERE NOT EXISTS 
+                (SELECT * FROM Comment WHERE author=${req.body.user}) AND id=${req.body.user};`;
+
+        db.run(sql, (err) => {
+
+            if (err) {
+                return res.json({
+                    result: false,
+                    error: err
+                });
+            }
+
+            return res.json({
+                result: true
+            });
+        });
+    });
+});
+
 // [API] execute SQL passed from request
 app.post('/api/sql/non-select', (req, res) => {
 
