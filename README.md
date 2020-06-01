@@ -1,6 +1,6 @@
 # NCKU_DBMS_FinalProject
 
-School final project for course 'Database Management System' @ NCKU.
+School final project of course 'Database Management System' @ NCKU.
 
 ## Topic
 
