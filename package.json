@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/CrashedBboy/NCKU_DBMS_FinalProject#readme",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "sqlite3": "^4.2.0"
   }
 }
